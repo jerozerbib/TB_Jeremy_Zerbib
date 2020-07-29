@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sudo firewall-cmd --zone=public --add-port=80/tcp
+sudo firewall-cmd --zone=public --add-port=443/tcp
+sudo firewall-cmd --reload

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "\$2y\$10\$C46RJFMEDXhS7Hsqixp1i.pztNzb4aMYm0r9SnanPbhgIzkuFsBji" | su - jeremy.zerbib -c "vncserver -kill :7"
+echo "\$2y\$10\$grDgbrhOiLhE0lkBFmID7OVilqmv3EAZLu.1TTQrqS3KZg3RmyIfS" | su - daniel.rossier -c "vncserver -kill :10"
+echo "\$2y\$10\$FdsD8QFTlyKMI.NefNegHOmCKhH5oosg0.p6nUhq.wY.y8aJ9dV7S" | su - user.name -c "vncserver -kill :11"
+
+sudo userdel -r jeremy.zerbib
+sudo userdel -r daniel.rossier
+sudo userdel -r user.name
+
+sudo groupdel admin
+sudo groupdel teacher
+sudo groupdel student

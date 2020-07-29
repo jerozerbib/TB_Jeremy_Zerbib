@@ -1,0 +1,99 @@
+\chapter{Cahier des charges}
+
+
+
+\section*{Résumé du problème}
+Le but de ce travail est de créer une distribution Linux pour les étudiants en \textit{TIC} et \textit{TIN}, de manière à sensibiliser les étudiants de l'école à  l'importance de maîtriser un outil tel que Linux dans le cadre de l'ingénierie.
+Beaucoup d'aspects quant à l'utilisation de Linux sont impératifs pour les cours des deux orientations et aucune formation officielle n'est donnée dans le cadre des cours. 
+L'utilisation d'outils comme \textit{docker} ou \textit{QEMU} sont nécessaires à certaines matières enseignées mais peu d'étudiants savent les utiliser. 
+En initiant les étudiants dès la première année, en fournissant un système complet et malléable, il est possible de combler ce manque, déjà remarqué par certains professeurs.
+Le changement de plan d'études propose une transition vers ce système sans modifier le fonctionnement actuel d'enseignement  au profit des étudiants.
+\newline 
+Une distribution configurée de manière optimale permettrait aux étudiants de suivre les cours de la HEIG-VD de manière pérenne et sécurisée si une couche de sécurité est rajoutée avec des sauvegardes sécurisées et automatique, des pare-feux avec des configurations proposées, des VPN installés, etc. 
+\newline
+Il serait donc intéressant de mettre à disposition une plateforme qui permette de garantir l'utilisation de manière licite des logiciels payants, fournis par l'HEIG.
+En effet, les logiciels fournis par l'école sont soumis à des conditions générales d'utilisation qui demandent à ce que le logiciel soit utilisé seulement dans le cadre de l'école.
+
+\subsection*{Problématique}
+Ce travail permettrait de créer une infrastructure permettant l'installation, la configuration et le déploiement des mises à jour ainsi que de générer des sauvegardes automatiques. 
+Tout cela de manière très stricte et sécurisée.
+Cet aspect de ce travail est rempli avec la distribution Linux.
+\newline 
+De plus, une gestion des licences doit être mise en place de façon à assurer l'utilisation de divers programmes de manière non commerciale. 
+\newline 
+Finalement, la création d'une telle infrastructure permettrait d'optimiser certains aspects de la vie des étudiants.
+\newline Pour résumer, nous pouvons résumer ce projet en deux objectifs distincts : 
+
+\begin{itemize}
+    \item Création d'un installateur permettant de mettre en place un environnement de travail adéquat pour les étudiants de l' \textbf{HEIG-VD} 
+    \item Création d'une gestion de l'ouverture d'un logiciel payant fourni par l'école ainsi que les interactions avec un filesystem donné
+\end{itemize}
+
+\subsection*{Solutions existantes}
+La solution proposée actuellement aux deux objectifs sont respectivement :
+\begin{itemize}
+    \item Mise à disposition de différentes machines virtuelles suivant les matières. 
+    Cette solution est efficace mais demande beaucoup d'espace disque pour un étudiant.
+    De plus, suivant les matières, il y a beaucoup de répétitions entre les machines virtuelles installées
+    \item À ce jour, \textit{eistore} est la seule manière d'obtenir légalement les logiciels fournis par l'école. 
+    Une fois installés, il n'y a aucune forme de contrôle sur l'utilisation de ces derniers.
+\end{itemize}
+
+\subsection*{Solutions exploratoires}
+\begin{itemize}
+    \item D'un point de vue distribution, un dérivé de la dernière version d'Ubuntu paraît la meilleure option.
+    \item Pour la gestion de licences, l'utilisation d'un portail Web utilisant la technologie \textit{\acrfull{vnc}} est la solution qui sera explorée lors de ce travail.
+\end{itemize}
+
+\section*{Cahier des charges}
+La liste ci-dessous explicite les tâches qui ont été effectuées lors de ce travail, avec un pourcentage indicatif du temps passé sur chacune d'elles :
+\begin{enumerate}
+    \item Recherche sur les différentes distributions Linux afin de trouver la meilleure base possible (5\%)
+    \item Recherche sur les différentes techniques de containerisation et de la gestion des interactions entre le filesystem et l'application (10\%)
+    \item Conception d'une interface Web permettant de faire des tests  avec le tunnel \acrshort{vnc} (20\%)
+    \item Création et configuration d'un serveur distant permettant de lancer des applications via un container Docker (10\%) 
+    \item Liaison entre la plateforme de tests et le serveur distant (20\%)
+    \item Preuve de la robustesse de la plateforme à travers des séries de tests qui seront automatisés (5\%)
+    \item Configuration et mise en place de la distribution (15\%)
+    \item Preuve et tests sur la distribution afin de la mettre en production (5\%)
+    \item Rédaction du rapport, documentation et mise à dispositions des plateformes (système d'exploitation et des logiciels), présentation du travail (10\%)
+\end{enumerate}
+
+
+\subsection*{Objectifs}
+Les objectifs de ce travail sont les suivants :
+\begin{itemize}
+    \item Fournir un système qui gère et garantit l'utilisation des licences de manières licites
+    \begin{itemize}
+        \item Garantie de l'authentification d'un utilisateur
+        \item Garantie de la portabilité de la plateforme sur tous systèmes d'exploitation
+        \item Garantie de l'isolation de l'application qui implique une garantie de l'utilisation licite de cette dernière
+    \end{itemize}
+    \item Fournir un système d'exploitation suffisamment optimisé pour simplifier les études d'un étudiant
+    \begin{itemize}
+        \item Système d'exploitation basé sur Ubuntu 20.04
+        \item Automatisation de la connexion à tous les services de l'école
+        \item Documentation permettant d'aider à la configuration et à la manipulation d'un système Linux dans le cadre de l'école.
+    \end{itemize}
+\end{itemize}
+
+% \subsection*{Déroulement}
+
+\subsection*{Livrables}
+Les livrables seront les suivants :
+\begin{enumerate}
+\item Une documentation contenant :
+	\begin{itemize}
+	\item Les détails des recherches effectuées
+	\item Les décisions découlant de ces recherches
+	\item Les détails concernant le changement de direction pris au milieu du travail
+	\item L'architecture utilisée pour la gestion de licenses et la distribution 
+	\item Les informations concernant le fonctionnement et les limitations de la plateforme Web 
+	\item Les informations concernant le fonctionnement et les limitations de la distribution 
+	\item Une planification initiale et finale
+	\item Un mode d’emploi d'utilisation de distribution
+	\end{itemize}
+\item Une plateforme Web regroupant les logiciels utilisable par un élève
+\item Un système d'exploitation sous la forme d'un \textit{.iso} à télécharger sur les serveurs de l'école
+\end{enumerate}
+

@@ -1,0 +1,185 @@
+\documentclass[a4paper,11pt,twoside,openright]{book} % Type du document
+
+% compiler avec : pdflatex, bibtex, pdflatex, pdflatex
+
+
+% +---------------------------------------------------------------+
+% | Language
+% +---------------------------------------------------------------+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{pdfpages}
+
+
+\usepackage[acronym, toc]{glossaries}
+
+\makeglossaries
+
+\newglossaryentry{GNOME}
+{
+	name=gnome,
+	description={Environnement graphique pour plateformes GNU/LINUX}
+}
+
+
+\newglossaryentry{filesystem}
+{
+	name=filesystem,
+	description={Organisation hiérarchique des fichiers au sein d'un système d'exploitation.}
+}
+
+\newglossaryentry{bloatwares}
+{
+	name=bloatwares,
+	description={Ensemble de logiciels superflus pour une OS}
+}
+
+
+\newglossaryentry{API}
+{
+	name=api,
+	description={Application Programming Interface -> ensemble normalisé de classes, de méthodes, de fonctions et de constants qui sert de façade par laquelle un logiciel offre des services à d'autres logiciels.}
+}
+
+\newglossaryentry{Operating System}
+{
+	name=os,
+	description={Ensemble de programmes qui dirige l'utilisation des ressources d'un ordinateur par des logiciels applicatifs.}
+}
+
+
+\newacronym{lts}{LTS}{Long Term Support}
+\newacronym{gui}{GUI}{Graphical user interface}
+\newacronym{os}{OS}{Operating System}
+\newacronym{de}{DE}{Desktop Environment}
+\newacronym{acl}{ACL}{Access Control List}
+\newacronym{vnc}{VNC}{Virtual Network Computing}
+
+\newif\ifisconfidential	\isconfidentialfalse
+
+\newif\ifisdraft\isdraftfalse
+
+
+
+% +---------------------------------------------------------------+
+% | Paramètres
+% +---------------------------------------------------------------+
+
+\newcommand{\TBtitle}{Sécurisation de logiciels et distribution Linux}
+% \newcommand{\TBsubtitle}{Sous-titre}%laisser vide si pas de sous-titre
+\newcommand{\TByear}{2020}
+\newcommand{\TBacademicYears}{2019-2020}
+
+\newcommand{\TBdpt}{Département des Technologie de l'information et de la communication (TIC)}
+\newcommand{\TBfiliere}{Filière Télécommunications}
+\newcommand{\TBorient}{Orientation Sécurité de l'information}
+
+\newcommand{\TBauthor}{Jeremy Zerbib}
+\newcommand{\TBsupervisor}{Prof. Daniel Rossier}
+\newcommand{\TBindustryContact}{Prof. Daniel Rossier}
+\newcommand{\TBindustryName}{REDS}
+\newcommand{\TBindustryAddress}{%
+  Route de Cheseaux 1\\
+  CP 521\\
+  1400 Yverdon-les-Bains
+}
+
+% Confidentiel?
+% uncomment if confidential / comment if not confiential
+% \isconfidentialtrue
+
+\newcommand{\TBresumePubliable}{
+Les études à l'\textit{HEIG-VD} sont sur le point de connaître un changement de programme assez drastique. 
+En effet, un remaniement des sections, départements et programmes sont mis en place pour la rentrée scolaire de Septembre 2020.
+L'introduction d'une formation en \textit{ingénierie des données} et les changements de programme des départements existants amènent à penser que l'introduction d'un système Linux.
+C'est pourquoi une distribution sur mesure pour l'\textit{HEIG-VD} serait la bienvenue 
+\newline 
+De plus, l'école déplore que certaines conditions générales d'utilisation (\textit{CGU}) ne soient pas respectées. 
+En effet, l'utilisation des logiciels fournis par l'école doit être faite dans le cadre scolaire sans pouvoir déborder sur une utilisation personnelle.
+Ainsi, dans le cadre de ce travail, une plateforme portable, disponible sur Internet par exemple, sera mise à disposition des étudiants pour qu'il puisse travailler avec ces outils en toute légalité.
+
+}
+
+% +---------------------------------------------------------------+
+
+
+
+% +-[set path]-------------------------------------+
+\usepackage{template/TB-style}
+\usepackage{template/TB-macros}
+\usepackage{template/TB-template}
+%\graphicspath{images/}
+
+
+\begin{document}
+
+\frontmatter
+\pagestyle{empty}
+
+% TITLE and template
+% +---------------------------------------------------------------+
+
+\TBmaketitle
+\pagestyle{frontmatter}
+
+\TBsecondTitle
+
+\TBpreambule
+
+\TBauthentification
+
+% Cahier des charges
+% +---------------------------------------------------------------+
+\input{chapters/cdc}
+
+
+% TOC
+% +---------------------------------------------------------------+
+\tableofcontents
+\clearpage
+
+
+% Content
+% +---------------------------------------------------------------+
+
+\mainmatter
+\pagestyle{plain}
+
+\input{chapters/introduction}
+
+\input{chapters/distrib}
+
+\input{chapters/softs}
+
+\input{chapters/conclusion}
+
+% +---------------------------------------------------------------+
+\cleardoublepage
+\addcontentsline{toc}{chapter}{Bibliographie}
+\bibliographystyle{plain}
+\bibliography{chapters/biblio}
+\nocite{*} %ajoute tout ce qu'il y a dans le bibtex
+
+\listoffigures
+\listoftables
+
+% Annexes
+% +---------------------------------------------------------------+
+\appendix
+
+\input{chapters/glossaire}
+
+\input{chapters/planning_init}
+
+\input{chapters/planning_final}
+
+\input{chapters/doc}
+
+\input{chapters/outils_distrib}
+
+\input{chapters/outils_softs}
+
+\input{chapters/journal-de-travail}
+
+\end{document}

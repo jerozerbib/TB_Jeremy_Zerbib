@@ -1,0 +1,104 @@
+#!/bin/bash
+
+for i in $(more /home/jeremy/docker/result.csv)
+do
+s=$i
+
+# Parse les donnees de la DB pour creer les utilisateurs et les dossiers correspondants
+
+user="$(cut -d'|' -f1 <<< "$s")"
+pass="$(cut -d'|' -f2 <<< "$s")"
+role="$(cut -d'|' -f3 <<< "$s")"
+apps="$(cut -d'|' -f4 <<< "$s")"
+id="$(cut -d'|' -f5 <<< "$s")"
+
+if ! id "$user" > /dev/null 2>&1; then
+	# Cree l'utilisateur s'il n'existe pas avec les permissions en fonction de son role
+	adduser -m $user
+	echo $pass | passwd --stdin "$user"
+	if [ "$role" = 'teacher' ];	then
+		if ! grep -w "$role" /etc/group 
+			then
+			groupadd "$role"	
+			setfacl -Rdm g:$role:rwx /home/$user
+			setfacl -Rm g:$role:rwx /home/$user
+		fi
+		usermod -aG "$role" "$user"
+		usermod -aG docker "$user"
+	elif [ "$role" = 'student' ]; then
+		if ! grep -w "$role" /etc/group 
+			then
+			groupadd "$role"
+			setfacl -Rdm g:$role:rx /home/$user
+			setfacl -Rm g:$role:rx /home/$user
+		fi
+		setfacl -Rdm g:$user:rx /home/$user
+		setfacl -Rdm u:$user:rx /home/$user
+		setfacl -Rm g:$user:rx /home/$user
+		setfacl -Rm u:$user:rx /home/$user
+		chmod -R 555 /home/$user
+		mkdir /home/$user/test
+		usermod -aG "$role" "$user"
+		usermod -aG docker "$user"
+		export DISPLAY=:0
+	elif [ "$role" = 'admin' ]; then
+		if ! grep -w "$role" /etc/group 
+			then
+			groupadd "$role"
+			setfacl -Rdm g:$role:rwx /home/$user
+			setfacl -Rm g:$role:rwx /home/$user
+		fi
+		usermod -aG "$role" "$user"
+		usermod -aG docker "$user"
+	fi
+	
+	# Copie le fichier de configuration VNC initiale dans le dossier de l'utilisateur
+	cp -r /home/jeremy/.vnc /home/$user/
+	cp -r /home/jeremy/.Xauthority /home/$user/
+	chown -R $user:$role /home/$user/.vnc
+	chown -R $user:$role /home/$user/.Xauthority
+	# Initie une connection VNC pour chaque utilisateur avec un numero de port défini
+	
+	if ! grep -q $user /etc/guacamole/user-mapping.xml; then
+	
+		# Copie du fichier intial pour faire des modifications sur l'original
+		cp /etc/guacamole/user-mapping.xml /etc/guacamole/user-mapping.xml.tmp
+		# Permet d'enlever la derniere ligne et de rajouter du contenu a la suite du fichier de config
+		head -n -1 /etc/guacamole/user-mapping.xml.tmp > /etc/guacamole/user-mapping.xml
+	
+		# vncserver :x -> port = 5900 + x
+        # Par défaut, VNCServer prend la valeur x et lui ajoute 5900 pour ouvrir un port sur la machine.
+        # Il faudra gérer la collision avec certains ports déjà ouvert
+		echo "	<authorize username=\"$user\" password=\"$pass\">"      >> /etc/guacamole/user-mapping.xml
+        	echo "        	<protocol>vnc</protocol>"                       >> /etc/guacamole/user-mapping.xml
+        	echo "        	<param name=\"hostname\">localhost</param>"     >> /etc/guacamole/user-mapping.xml
+        	echo "        	<param name=\"port\">$(($id+5900))</param>" >> /etc/guacamole/user-mapping.xml
+        	echo "        	<param name=\"password\">polopolo</param>"      >> /etc/guacamole/user-mapping.xml
+        	echo "	</authorize>"	                                      >> /etc/guacamole/user-mapping.xml
+		echo "</user-mapping>"                                        >> /etc/guacamole/user-mapping.xml
+	
+
+	fi
+	
+	echo $pass | su - $user -c "vncserver :$id"	
+fi
+
+# Cree les dossiers pour les applications
+
+echo $apps > number
+count=$(tr -cd ',' < number | wc -c)
+count=$((count+2))
+
+counter=1
+until [ $counter -ge $count ]
+do 
+	app="$(cut -d',' -f "$counter" <<< "$apps")"
+	[ -d /home/$user/$app ] || mkdir /home/$user/$app
+	# Copie les scripts de lancement de docker dans les dossiers correspondants
+	cp /home/jeremy/docker/$app/launch.sh /home/$user/$app
+	chown -R $user:$user /home/$user/$app
+	mkdir /home/$user/$app/data
+	((counter++))
+done
+done
+

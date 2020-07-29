@@ -1,0 +1,98 @@
+This is BibTeX, Version 0.99d (TeX Live 2020/Arch Linux)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: tb_report.aux
+The style file: plain.bst
+Database file #1: chapters/biblio.bib
+Warning--entry type for "ISO" isn't style-file defined
+--line 1 of file chapters/biblio.bib
+I was expecting an "="---line 4 of file chapters/biblio.bib
+ :  year: 
+ :        2019,
+I'm skipping whatever remains of this entry
+Warning--entry type for "keyring" isn't style-file defined
+--line 9 of file chapters/biblio.bib
+Warning--entry type for "nmcli" isn't style-file defined
+--line 17 of file chapters/biblio.bib
+I was expecting a `,' or a `}'---line 21 of file chapters/biblio.bib
+ :  url = {https://docs.ubuntu.com/core/en/stacks/network/network-manager/docs/configure-wifi-connections}
+ :                                                                                                        .
+I'm skipping whatever remains of this entry
+Warning--entry type for "smb" isn't style-file defined
+--line 25 of file chapters/biblio.bib
+I was expecting a `,' or a `}'---line 27 of file chapters/biblio.bib
+ :  title = {Samba}
+ :                 .
+I'm skipping whatever remains of this entry
+Warning--entry type for "bot" isn't style-file defined
+--line 33 of file chapters/biblio.bib
+Warning--entry type for "evs" isn't style-file defined
+--line 42 of file chapters/biblio.bib
+Warning--entry type for "evs2" isn't style-file defined
+--line 51 of file chapters/biblio.bib
+Warning--entry type for "dvk" isn't style-file defined
+--line 59 of file chapters/biblio.bib
+Warning--entry type for "vnc" isn't style-file defined
+--line 67 of file chapters/biblio.bib
+Warning--entry type for "vncs" isn't style-file defined
+--line 75 of file chapters/biblio.bib
+Repeated entry---line 83 of file chapters/biblio.bib
+ : @online{vncs
+ :             ,
+I'm skipping whatever remains of this entry
+Warning--entry type for "sev" isn't style-file defined
+--line 92 of file chapters/biblio.bib
+Warning--entry type for "guac" isn't style-file defined
+--line 100 of file chapters/biblio.bib
+Warning--entry type for "vnc_conf" isn't style-file defined
+--line 108 of file chapters/biblio.bib
+Warning--entry type for "creatim" isn't style-file defined
+--line 116 of file chapters/biblio.bib
+You're missing a field part---line 119 of file chapters/biblio.bib
+ :  year = 
+ :         ,
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in nmcli
+Warning--to sort, need author or key in keyring
+Warning--to sort, need author or key in smb
+You've used 14 entries,
+            2118 wiz_defined-function locations,
+            541 strings with 4904 characters,
+and the built_in function-call counts, 2633 in all, are:
+= -- 223
+> -- 80
+< -- 0
++ -- 36
+- -- 22
+* -- 83
+:= -- 405
+add.period$ -- 25
+call.type$ -- 14
+change.case$ -- 53
+chr.to.int$ -- 0
+cite$ -- 17
+duplicate$ -- 98
+empty$ -- 312
+format.name$ -- 22
+if$ -- 585
+int.to.chr$ -- 0
+int.to.str$ -- 14
+missing$ -- 0
+newline$ -- 56
+num.names$ -- 22
+pop$ -- 123
+preamble$ -- 1
+purify$ -- 39
+quote$ -- 0
+skip$ -- 117
+stack$ -- 0
+substring$ -- 70
+swap$ -- 14
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 56
+warning$ -- 3
+while$ -- 22
+width$ -- 16
+write$ -- 105
+(There were 5 error messages)

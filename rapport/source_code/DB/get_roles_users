@@ -1,0 +1,1 @@
+SELECT u.username, u.password, r.role_name FROM u_user u INNER JOIN role r ON u.role_id = r.role_id;

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sh /home/jeremy/docker/update_csv > result.csv
+echo "csv is updated"
+sh /home/jeremy/docker/create_user

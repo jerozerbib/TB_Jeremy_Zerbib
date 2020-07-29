@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source /home/jeremy/docker/.env
+
+sql="$(cat /home/jeremy/docker/query.sql)" 
+PGPASSWORD="$POSTGRES_PASSWORD" psql -t -A \
+-h "$POSTGRES_HOST" \
+-p "$POSTGRES_PORT" \
+-d "$POSTGRES_DATABASE" \
+-U "$POSTGRES_USERNAME" \
+-c "$sql"
+

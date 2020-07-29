@@ -1,0 +1,1 @@
+SELECT u.username, u.password, r.role_name, array_to_string(array_agg(a.name), ',') AS Applications, u.user_id FROM u_user u INNER JOIN role r ON u.role_id = r.role_id INNER JOIN orientation o ON u.orientation_id = o.orientation_id INNER JOIN application a ON a.orientation_id = o.orientation_id GROUP BY u.user_id, u.username, u.password, r.role_name;

@@ -1,0 +1,61 @@
+\begin{thebibliography}{10}
+
+\bibitem{smb}
+Samba.
+
+\bibitem{keyring}
+I need to securely store a username and password in python, what are my
+  options?, 2019.
+
+\bibitem{nmcli}
+Configure wifi connections, 2020.
+
+\bibitem{guac}
+Deviant Engineer.
+\newblock Install guacamole from source on centos 729 nov 2016, 2018.
+
+\bibitem{vnc_conf}
+Pradeep Kumar.
+\newblock Install and configure vnc server in centos 7 and rhel 7, 2020.
+
+\bibitem{dvk}
+Katie Lane.
+\newblock Kubernetes vs. docker: What does it really mean?, 2019.
+
+\bibitem{evs}
+Scott~D. Lowe.
+\newblock What is the difference between emulation vs. virtualization?, 2013.
+
+\bibitem{sev}
+Lelio Motta.
+\newblock Emuler, simuler, virtualiser : de quoi parle t-on ?, 2020.
+
+\bibitem{bot}
+Gabriel Roche.
+\newblock Bot heig-vd, 2020.
+
+\bibitem{vncs}
+Ravie Saive.
+\newblock Install tightvnc server in rhel/centos and fedora to access remote
+  desktops, 2013.
+
+\bibitem{vnc}
+Ravie Saive.
+\newblock How to access remote vnc desktop from web browser using tightvnc java
+  viewer, 2015.
+
+\bibitem{ISO}
+Mohd Sohail.
+\newblock Make your very own customized linux distro from your current
+  installation.
+
+\bibitem{evs2}
+TEC Team.
+\newblock Virtualization vs. emulation vs. simulation: What's the difference?,
+  2019.
+
+\bibitem{creatim}
+Creative Tim.
+\newblock Material dashboard.
+
+\end{thebibliography}
